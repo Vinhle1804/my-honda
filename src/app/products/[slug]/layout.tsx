@@ -8,7 +8,7 @@ export default function HomeLayout({
 }>) {
   return (
     <>
-      <Header/>
+      <div className="pb-[110px]"><Header/></div>
       {children}
       <Footer/>
     </>

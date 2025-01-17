@@ -11,7 +11,7 @@ function Header() {
   const [isOpen, setOpen] = useState(false);
 
   return (
-    <div>
+    <div className="fixed w-full bg-white z-10">
       <div className="flex justify-between xl:justify-around items-center h-[60px]">
         <div>
           <Image

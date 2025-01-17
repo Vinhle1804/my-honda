@@ -5,7 +5,7 @@ export default function HomeLayout({
 }>) {
   return (
     <>
-      <div>login</div>
+      
       {children}
     </>
   );

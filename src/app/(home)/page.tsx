@@ -1,15 +1,12 @@
+import Carousel from '@/components/carousel';
+import ProductsSection from './components/sections/products-section';
 
-import Body from "@/components/body";
-import Carousel from "@/components/carousel";
 
 export default function Home() {
   return (
     <div>
-  
-   <Carousel/>
-   <Body/>
-  
-   
+      <Carousel />
+      <ProductsSection />
     </div>
   );
 }

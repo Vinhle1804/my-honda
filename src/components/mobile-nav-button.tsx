@@ -15,7 +15,7 @@ function MobileNavButton({ data }: { data: INavigateItem }) {
       className="w-full"
     >
       <div>
-      <div className="flex w-full justify-between p-2">
+      <div className="flex w-full justify-between p-2 fixed">
         <p>{data.label}</p>
         <FaChevronDown className={isOpen ? "rotate-90" : ""} />
         

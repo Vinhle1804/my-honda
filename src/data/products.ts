@@ -21,11 +21,11 @@ export interface IProductVersion {
 		color: string,
 		images: string[],
 		buttonStyle?: string,
-		price: number | string
+		price: number | string,
+		description?: string,
+		dongCo: string
 	}[]
 }
-
-
 
 export const PRODUCTS: IProduct[] = [
 	{
@@ -39,23 +39,26 @@ export const PRODUCTS: IProduct[] = [
 				variants: [
 					{
 						id: '1.1',
-						color: 'Xanh đen',
-						buttonStyle:'bg-gradient-to-l from-black to-green-500',
+						color: 'blue',
+						
 						images: [
 							'https://cdn.honda.com.vn/motorbike-versions/Image360/November2024/1730800747/6.png',
 							'https://cdn.honda.com.vn/motorbike-versions/Image360/November2024/1730800747/7.png'
 						],
-						price: 142690000
+						price: 142690000,
+						description: 'Màu xanh năng động, phù hợp với phong cách thể thao và hiện đại',
+						dongCo: '350cc SOHC'
 					},
 					{
 						id: '1.2',
-						color: 'Xám đen',
+						color: 'red',
 						buttonStyle:'bg-gradient-to-r from-slate-400 to-slate-700',
 						images: [
 							'https://cdn.honda.com.vn/motorbike-versions/Image360/November2024/1730800509/6.png',
 							'https://cdn.honda.com.vn/motorbike-versions/Image360/November2024/1730800509/0.png'
 						],
-						price: 152690000
+						price: 152690000,
+						dongCo: '350cc SOHC okok'
 					}
 				]
 			},
@@ -70,7 +73,9 @@ export const PRODUCTS: IProduct[] = [
 							'https://cdn.honda.com.vn/motorbike-versions/Image360/November2024/1730798593/6.png',
 							'https://cdn.honda.com.vn/motorbike-versions/Image360/November2024/1730798593/1.png'
 						],
-						price: 152190000
+						price: 152190000,
+						description: 'Màu xám đen huyền bí, kết hợp hoàn hảo giữa sự tinh tế và mạnh mẽ',
+						dongCo: '350cc SOHC huhuhu'
 					}
 				]
 			},
@@ -85,7 +90,9 @@ export const PRODUCTS: IProduct[] = [
 							'https://cdn.honda.com.vn/motorbike-versions/Image360/November2024/1730800088/6.png',
 							'https://cdn.honda.com.vn/motorbike-versions/Image360/November2024/1730800088/2.png'
 						],
-						price: 151190000
+						price: 151190000,
+						description: 'Sự kết hợp tinh tế giữa trắng và đen, tạo nên vẻ sang trọng đỉnh cao',
+						dongCo: '350cc SOHC  aaa'
 					}
 				]
 			}
@@ -107,7 +114,9 @@ export const PRODUCTS: IProduct[] = [
 							'https://cdn.honda.com.vn/motorbike-versions/Image360/November2024/vision/blue1.png',
 							'https://cdn.honda.com.vn/motorbike-versions/Image360/November2024/vision/blue2.png'
 						],
-						price: 35000000
+						price: 35000000,
+						description: 'Màu xanh tươi trẻ, phù hợp với phong cách năng động của giới trẻ',
+						dongCo: '110cc, 4 kỳ, 1 xy-lanh, làm mát bằng không khí'
 					},
 					{
 						id: '2.2',
@@ -116,7 +125,9 @@ export const PRODUCTS: IProduct[] = [
 							'https://cdn.honda.com.vn/motorbike-versions/Image360/November2024/vision/white1.png',
 							'https://cdn.honda.com.vn/motorbike-versions/Image360/November2024/vision/white2.png'
 						],
-						price: 35500000
+						price: 35500000,
+						description: 'Màu trắng thanh lịch, tạo nên vẻ đẹp tinh tế và hiện đại',
+						dongCo: '110cc, 4 kỳ, 1 xy-lanh, làm mát bằng không khí'
 					}
 				]
 			}
@@ -138,7 +149,9 @@ export const PRODUCTS: IProduct[] = [
 							'https://cdn.honda.com.vn/motorbike-versions/Image360/November2024/airblade/silver1.png',
 							'https://cdn.honda.com.vn/motorbike-versions/Image360/November2024/airblade/silver2.png'
 						],
-						price: 56000000
+						price: 56000000,
+						description: 'Màu bạc thời thượng, thể hiện phong cách công nghệ hiện đại',
+						dongCo: '150cc, 4 kỳ, 1 xy-lanh, làm mát bằng dung dịch'
 					},
 					{
 						id: '3.2',
@@ -147,7 +160,9 @@ export const PRODUCTS: IProduct[] = [
 							'https://cdn.honda.com.vn/motorbike-versions/Image360/November2024/airblade/blue1.png',
 							'https://cdn.honda.com.vn/motorbike-versions/Image360/November2024/airblade/blue2.png'
 						],
-						price: 56500000
+						price: 56500000,
+						description: 'Màu xanh đen thể thao, tạo điểm nhấn mạnh mẽ và cá tính',
+						dongCo: '150cc, 4 kỳ, 1 xy-lanh, làm mát bằng dung dịch'
 					}
 				]
 			}
@@ -169,7 +184,9 @@ export const PRODUCTS: IProduct[] = [
 							'https://cdn.honda.com.vn/motorbike-versions/Image360/November2024/lead/red1.png',
 							'https://cdn.honda.com.vn/motorbike-versions/Image360/November2024/lead/red2.png'
 						],
-						price: 42000000
+						price: 42000000,
+						description: 'Màu đỏ nổi bật, phù hợp với người dùng cá tính và năng động',
+						dongCo: '125cc, 4 kỳ, 1 xy-lanh, làm mát bằng dung dịch'
 					},
 					{
 						id: '4.2',
@@ -178,7 +195,9 @@ export const PRODUCTS: IProduct[] = [
 							'https://cdn.honda.com.vn/motorbike-versions/Image360/November2024/lead/blue1.png',
 							'https://cdn.honda.com.vn/motorbike-versions/Image360/November2024/lead/blue2.png'
 						],
-						price: 42500000
+						price: 42500000,
+						description: 'Màu xanh lơ nhẹ nhàng, tạo cảm giác thoải mái và thanh lịch',
+						dongCo: '125cc, 4 kỳ, 1 xy-lanh, làm mát bằng dung dịch'
 					}
 				]
 			}
@@ -200,7 +219,9 @@ export const PRODUCTS: IProduct[] = [
 							'https://cdn.honda.com.vn/motorbike-versions/Image360/November2024/wavealpha/blue1.png',
 							'https://cdn.honda.com.vn/motorbike-versions/Image360/November2024/wavealpha/blue2.png'
 						],
-						price: 18000000
+						price: 18000000,
+						description: 'Màu xanh truyền thống, phù hợp với mọi độ tuổi và phong cách',
+						dongCo: '110cc, 4 kỳ, 1 xy-lanh, làm mát bằng không khí'
 					},
 					{
 						id: '5.2',
@@ -209,7 +230,9 @@ export const PRODUCTS: IProduct[] = [
 							'https://cdn.honda.com.vn/motorbike-versions/Image360/November2024/wavealpha/white1.png',
 							'https://cdn.honda.com.vn/motorbike-versions/Image360/November2024/wavealpha/white2.png'
 						],
-						price: 18500000
+						price: 18500000,
+						description: 'Màu trắng trang nhã, dễ dàng phối hợp trong mọi hoàn cảnh',
+						dongCo: '110cc, 4 kỳ, 1 xy-lanh, làm mát bằng không khí'
 					}
 				]
 			}
@@ -222,7 +245,7 @@ export const PRODUCTS: IProduct[] = [
 		type: ProductType.xeConTay,
 		versions: [
 			{
-				title: 'Phiên bản địa hình',
+				title: 'Phiên bản thể thao',
 				variants: [
 					{
 						id: '6.1',
@@ -231,7 +254,9 @@ export const PRODUCTS: IProduct[] = [
 							'https://cdn.honda.com.vn/motorbike-versions/Image360/November2024/winnerx/black1.png',
 							'https://cdn.honda.com.vn/motorbike-versions/Image360/November2024/winnerx/black2.png'
 						],
-						price: 46000000
+						price: 46000000,
+						description: 'Màu đen huyền bí, tôn lên vẻ mạnh mẽ đặc trưng của dòng xe côn tay',
+						dongCo: '150cc, DOHC, 4 kỳ, 1 xy-lanh, làm mát bằng dung dịch'
 					},
 					{
 						id: '6.2',
@@ -240,10 +265,12 @@ export const PRODUCTS: IProduct[] = [
 							'https://cdn.honda.com.vn/motorbike-versions/Image360/November2024/winnerx/red1.png',
 							'https://cdn.honda.com.vn/motorbike-versions/Image360/November2024/winnerx/red2.png'
 						],
-						price: 46500000
+						price: 46500000,
+						description: 'Màu đỏ thể thao, khẳng định cá tính mạnh mẽ của người lái',
+						dongCo: '150cc, DOHC, 4 kỳ, 1 xy-lanh, làm mát bằng dung dịch'
 					}
 				]
 			}
 		]
-	},
+	}
 ];

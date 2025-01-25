@@ -9,22 +9,23 @@ function MobileNavButton({ data }: { data: INavigateItem }) {
   const [isOpen, setOpen] = useState<boolean>(false);
   return (
     <button
-      onClick={() => {
-        setOpen(!isOpen);
-      }}
+      onClick={() => setOpen(!isOpen)}
       className="w-full"
     >
-      <div>
-      <div className="flex w-full justify-between p-2 fixed">
-        <p>{data.label}</p>
-        <FaChevronDown className={isOpen ? "rotate-90" : ""} />
-        
+      <div className="flex w-full flex-col">
+        <div className="flex w-full justify-between items-center p-2 border-b">
+          <p>{data.label}</p>
+          <FaChevronDown 
+            className={`transition-transform duration-200 ${isOpen ? "rotate-90" : ""}`} 
+          />
         </div>
         {isOpen && (
-          <ul className="text-left text-black text-lg p-2 divide-y-[1px] divide-black">
+          <ul className="text-left text-black text-lg divide-y divide-gray-200">
             {data?.children?.map((child) => (
-              <li key={child.id}>
-                <Link href={child.path ?? "/"}>{child.label}</Link>
+              <li key={child.id} className="p-2 hover:bg-gray-50">
+                <Link href={child.path ?? "/"} className="block w-full">
+                  {child.label}
+                </Link>
               </li>
             ))}
           </ul>

@@ -1,4 +1,4 @@
-import MainDetailPage from "./_components/main-section"
+import MainDetailPage from "./_components/main-detail"
 
 export default async function ProductDetail({
   params,

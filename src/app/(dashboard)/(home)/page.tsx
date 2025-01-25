@@ -1,12 +1,12 @@
 import Carousel from '@/components/carousel';
-import ProductsSection from './components/sections/products-section';
+import HomeProducts from './components/homeProduct';
 
 
 export default function Home() {
   return (
     <div>
       <Carousel />
-      <ProductsSection />
+      <HomeProducts />
     </div>
   );
 }

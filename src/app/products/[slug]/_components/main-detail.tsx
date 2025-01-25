@@ -3,24 +3,16 @@
 import React, { useState } from "react";
 import { IProductVersion, PRODUCTS } from "../../../../data/products";
 import Image from "next/image";
-import Detail1 from "./detail1";
-
-import Detail3 from "./detail3";
-import Detail4 from "./detail4";
-import Detail5 from "./detail5";
-import Detail6 from "./detail6";
-import Detail7 from "./detail7";
-import Detail8 from "./detail8";
-import { Color } from "@/constants/naviagte-menus";
+import { Color } from "@/constants/color";
 
 function MainDetailPage({ slug }: { slug: string }) {
-  const product = PRODUCTS.filter((product) => product.slug === slug)[0];
+  const product = PRODUCTS.find((product) => product.slug === slug);
   const [selectedVersion, setSelectedVersion] = useState<{
     title: string;
     data: IProductVersion;
   }>({
-    title: product.versions[0].title,
-    data: product.versions[0],
+    title: product?.versions[0]?.title ?? '',
+    data: product?.versions[0] ?? {} as IProductVersion,
   });
 
   const [versionOfColor, setVersionOfColor] = useState<{
@@ -29,8 +21,14 @@ function MainDetailPage({ slug }: { slug: string }) {
     images: string[];
     buttonStyle?: string;
     price: number | string;
-  }>(selectedVersion.data.variants[0]);
-
+    description?: string;
+    dongCo?: string;
+  }>(product?.versions[0]?.variants[0] ?? {
+    id: '',
+    color: '',
+    images: [],
+    price: '',
+  });
   // State save color data
 
   const scrollToElement = (id: string) => {
@@ -39,6 +37,42 @@ function MainDetailPage({ slug }: { slug: string }) {
       element.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
+
+  const getColorClass = (color: string) => {
+    if (!color || !(color in Color)) {
+      return Color.default;
+    }
+    return Color[color as keyof typeof Color];
+  };
+  if (!product) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-red-600">
+            Không tìm thấy sản phẩm
+          </h1>
+          <p className="mt-2 text-gray-600">
+            Sản phẩm với mã {slug} không tồn tại
+          </p>
+        </div>
+      </div>
+    );
+  }
+  if (!product) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-red-600">
+            Không tìm thấy sản phẩm
+          </h1>
+          <p className="mt-2 text-gray-600">
+            Sản phẩm với mã {slug} không tồn tại
+          </p>
+        </div>
+      </div>
+    );
+  }
+
 
   return (
     <>
@@ -116,13 +150,9 @@ function MainDetailPage({ slug }: { slug: string }) {
           </div>
         </div>
 
-        <div className="h-[700px] w-full bg-slate-500" id="page-1">
-          <Detail1 />
-        </div>
-
         <div
           id="gia"
-          className="flex justify-between p-5 w-full bg-gradient-to-r from-slate-300 to-slate-500"
+          className="flex justify-between p-5 w-full bg-gradient-to-r from-slate-300 to-gray-500"
         >
           <div className="w-1/3 p-10 items-center">
             <p className="uppercase font-bold">Giá & Màu sắc</p>
@@ -131,12 +161,14 @@ function MainDetailPage({ slug }: { slug: string }) {
                 return (
                   <div className="flex flex-col" key={variant.id}>
                     <button
-                      onClick={() => setVersionOfColor(variant)}
-                      className={`h-10 w-20 px-3 py-1.5 rounded-lg border ${
-                        Color[
-                          (variant?.color as keyof typeof Color) || "default"
-                        ]
-                      }`}
+                      onClick={() => {
+                        console.log(variant.color);
+                        console.log(getColorClass(variant.color));
+                        setVersionOfColor(variant);
+                      }}
+                      className={`h-10 w-20 px-3 py-1.5 rounded-lg border ${getColorClass(
+                        variant.color
+                      )}`}
                     ></button>
                     <span
                       className={`mt-2 text-sm text-center text-gray-700 ${
@@ -169,25 +201,30 @@ function MainDetailPage({ slug }: { slug: string }) {
             ></Image>
           </div>
         </div>
-
-        <div className="h-[700px] w-full bg-slate-500" id="thiet-ke">
-          <Detail3 />
-        </div>
-        <div className="h-[700px] w-full bg-slate-500" id="dong-co">
-          <Detail4 />
-        </div>
-        <div className="h-[700px] w-full bg-slate-500" id="cong-nghe">
-          <Detail5 />
-        </div>
-        <div className="h-[700px] w-full bg-slate-500" id="tien-ich">
-          <Detail6 />
-        </div>
-        <div className="h-[700px] w-full bg-slate-500" id="thu-vien-anh">
-          <Detail7 />
-        </div>
-        <div className="h-[700px] w-full bg-slate-500" id="lich-su-doi-xe">
-          <Detail8 />
-        </div>
+        {versionOfColor.description && (
+        <div className="h-[700px] w-full bg-slate-500" id="thiet-ke">Ơ
+            <div className="w-full max-w-6xl mx-auto p-6">
+              <div className="bg-white/90 rounded-lg shadow-lg p-6">
+                <h3 className="text-2xl font-bold mb-4">Thiết kế</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  {versionOfColor.description}
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+        {versionOfColor.dongCo && (
+        <div className="h-[700px] w-full bg-slate-500" id="dong-co">Ơ
+            <div className="w-full max-w-6xl mx-auto p-6">
+              <div className="bg-white/90 rounded-lg shadow-lg p-6">
+                <h3 className="text-2xl font-bold mb-4">động cơ</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  {versionOfColor.dongCo}
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
